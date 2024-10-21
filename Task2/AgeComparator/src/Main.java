@@ -2,9 +2,9 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        int vasyaAge = 14;
-        int katyaAge = 60;
-        int mishaAge = 23;
+        int vasyaAge = 2;
+        int katyaAge = 10;
+        int mishaAge = 17;
 
         int min = -1;
         int middle = -1;
@@ -18,21 +18,28 @@ public class Main {
             min = mishaAge;
         }
 
-        if (vasyaAge != min && (vasyaAge <= katyaAge || vasyaAge <= mishaAge)) {
+        if (vasyaAge >= katyaAge && vasyaAge >= mishaAge) {
+            max = vasyaAge;
+        } else if (katyaAge >= vasyaAge && katyaAge >= mishaAge) {
+            max = katyaAge;
+        } else {
+            max = mishaAge;
+        }
+
+        if (vasyaAge == katyaAge && mishaAge > vasyaAge) {
+            middle = katyaAge;
+        } else if (vasyaAge == mishaAge && katyaAge > vasyaAge) {
+            middle = mishaAge;
+        } else if (katyaAge == mishaAge && vasyaAge > katyaAge) {
+            middle = mishaAge;
+        }else if (vasyaAge != min && vasyaAge != max) {
             middle = vasyaAge;
-        } else if (katyaAge != min && (katyaAge <= vasyaAge || katyaAge <= mishaAge)) {
+        } else if (katyaAge != min && katyaAge != max) {
             middle = katyaAge;
         } else {
             middle = mishaAge;
         }
 
-        if (vasyaAge != min && vasyaAge != middle) {
-            max = vasyaAge;
-        } else if (katyaAge != min && katyaAge != middle) {
-            max = katyaAge;
-        } else {
-            max = mishaAge;
-        }
 
         System.out.println("Minimal age: " + min);
         System.out.println("Middle age: " + middle);
